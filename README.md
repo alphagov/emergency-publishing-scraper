@@ -1,11 +1,9 @@
 # Emergency Publishing Scraper
 
-When someone needs to bring the emergency publishing banner,
-they need to make sure the banner is live in different pages across [GOV.UK](http://gov.uk)
-website.
+This tool is meant to help people who need to verify that the Emergency Publishing Banner
+is live in different pages across [GOV.UK](http://gov.uk) website.
 
-This tool aims to facilitate people's life by checking it automatically for them
-and inform which pages might not have the banner.
+It informs via screenshots and textual ouput which pages do not have the banner.
 
 ---
 
@@ -45,5 +43,20 @@ And run casperjs again.
 
 ### Usage
 
+#### Run scrapper on default paths on a specific environment
+
     casperjs scrapper.js --env=environment_name
-    casperjs scrapper.js --only-pages=/page-1,/page-2
+
+### Give a list of paths to run instead of default ones
+
+    casperjs scrapper.js --env=environment_name --paths=/page-1,/page-2,...
+
+### Write to a file
+
+    casperjs scrapper.js --env=environment_name > report.txt
+
+
+### License
+
+MIT License
+
