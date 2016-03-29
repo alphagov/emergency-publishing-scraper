@@ -43,17 +43,17 @@ And run casperjs again.
 
 ### Usage
 
-#### Run scrapper on default paths on a specific environment
+#### Run scraper on default paths on a specific environment
 
-    casperjs scrapper.js --env=environment_name
+    casperjs scraper.js --env=environment_name
 
 ### Give a list of paths to run instead of default ones
 
-    casperjs scrapper.js --env=environment_name --paths=/page-1,/page-2,...
+    casperjs scraper.js --env=environment_name --paths=/page-1,/page-2,...
 
 ### Write to a file
 
-    casperjs scrapper.js --env=environment_name > report.txt
+    casperjs scraper.js --env=environment_name > report.txt
 
 
 ### License
