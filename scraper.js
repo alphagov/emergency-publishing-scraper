@@ -109,7 +109,17 @@ casper.each(linksWithEnvironment(getPaths()), function(self, link) {
             console.log(green + '---- found banner colour: ' + colour);
             console.log('---- found heading: ' + heading);
             console.log('---- found description: ' + description);
+            console.log(linkPhrase + ' found "more information" link.');
+        }
+        else if (this.exists('#banner-notification')) {
+            var colour      = this.getElementAttribute('section[id="banner-notification"]', 'class');
+            var description = this.fetchText('section[id="banner-notification"] div p');
+            var hasLink     = this.exists('section[id="banner-notification"] div a');
 
+            var linkPhrase = hasLink ? '----' : red + '---- *not*';
+
+            console.log(green + '---- found banner colour: ' + colour);
+            console.log('---- found heading & description: ' + description);
             console.log(linkPhrase + ' found "more information" link.');
         }
         else {
