@@ -19,11 +19,6 @@ if (help != undefined) {
 
 console.log('About to run on ' + env + ', please wait...');
 
-/// colors
-var red   = "\033[31m";
-var white = "\033[37m";
-var green = "\033[32m";
-
 var defaultPaths = [
     '/',
     '/financial-help-disabled',
@@ -80,15 +75,15 @@ casper.start();
 
 casper.each(linksWithEnvironment(getPaths()), function(self, link) {
     self.thenOpen(link, function(response) {
-        console.log(white + "Inspecting... \n-- " + link);
+        console.log("Inspecting... \n-- " + link);
         console.log(response["status"])
 
         if (response["status"] == 429) {
-            return console.log(red+ "Too many requests, try using me again later..." + white);
+            return console.log("ERROR: Too many requests, try again later.");
         }
 
         if (response["status"] == null || response["status"] == "null") {
-            return console.log(red + "Seems that we cannot communicate with the server, please ensure the url is correct." + white);
+            return console.log("ERROR: Failed to communicate with the server, please ensure the url is correct.");
         }
 
         this.capture('screenshots/'+ normalisePathName(link) +'.png', {
@@ -104,9 +99,9 @@ casper.each(linksWithEnvironment(getPaths()), function(self, link) {
             var description = this.fetchText('.campaign-inner p');
             var hasLink     = this.exists('.campaign-inner a');
 
-            var linkPhrase = hasLink ? '----' : red + '---- *not*';
+            var linkPhrase = hasLink ? '----' : 'ERROR: ---- *not*';
 
-            console.log(green + '---- found banner colour: ' + colour);
+            console.log('SUCCESS: ---- found banner colour: ' + colour);
             console.log('---- found heading: ' + heading);
             console.log('---- found description: ' + description);
             console.log(linkPhrase + ' found "more information" link.');
@@ -121,15 +116,15 @@ casper.each(linksWithEnvironment(getPaths()), function(self, link) {
             var description = this.fetchText('.govuk-emergency-banner div p');
             var hasLink     = this.exists('.govuk-emergency-banner div a');
 
-            var linkPhrase = hasLink ? '----' : red + '---- *not*';
+            var linkPhrase = hasLink ? '----' : 'ERROR: ---- *not*';
 
-            console.log(green + '---- found banner campaign: ' + campaign);
+            console.log('SUCCESS: ---- found banner campaign: ' + campaign);
             console.log('---- found heading: ' + heading);
             console.log('---- found description: ' + description);
             console.log(linkPhrase + ' found "more information" link.');
         }
         else {
-            console.log(red + "---- banner was not found.")
+            console.log("ERROR: ---- banner was not found.")
         }
     });
 });
