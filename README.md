@@ -5,16 +5,13 @@ is live in different pages across [GOV.UK](http://gov.uk) website.
 
 It informs via screenshots and textual ouput which pages do not have the banner.
 
----
-
 ### Setup
 
 You have two options to install, one uses brew and the other uses npm
-
-    $ brew install phantomjs2 casperjs
-
-    $ npm install -g phantomjs casperjs
-
+```
+$ brew install phantomjs casperjs
+$ npm install -g phantomjs casperjs
+```
 
 ### Troubleshooting
 
@@ -27,8 +24,6 @@ Let's double check if you happen to be one of them, please run the following:
 If you happen to receive the following:
 
     $ env: node\r: No such file or directory
-
-#### Follow the steps
 
 Open phantomjs executable with vim
 
